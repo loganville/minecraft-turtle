@@ -3,6 +3,7 @@ FUEL = 1
 WOOD = 2
 SAPLING = 3
 FURNACE = 4
+CHEST = 5
 function look_for_x(x)
 	local index = 1
 	for index = 1,4 do
@@ -22,8 +23,17 @@ function suck()
 		turtle.suckUp()
 		print ("found furnace")
 	end
-	turtle.select(SAPLING)
-	turtle.suck()
+	turtle.select(CHEST)
+	if turtle.compare() then
+		index = 6
+		for index = 6,16 do
+			turtle.select(index)
+			turtle.drop()
+		end
+	else
+		turtle.select(SAPLING)
+		turtle.suck()
+	end
 end
 
 function plant()
